@@ -4,15 +4,17 @@
    [bienvenides.events :as events]
    [bienvenides.subs :as subs]
    [bienvenides.utils :as utils]
-   [reagent.core :as r]
-   ))
+   [reagent.core :as r]))
 
 (defn not-found []
   [:h1 "Ups, I don't exist :("])
 
+(def main-panel-styles
+  [[".main-panel" {:text-align "center"}]])
+
 (defn main-panel-core [{:keys [name]}]
-  [:div
-   [:h1 "Bienvenides " name]
+  [:div.main-panel
+   [:h2 "Bienvenides " name]
    [:button {:on-click #(re-frame/dispatch [::events/play name])} "Play"]])
 
 (defn main-panel [props]
